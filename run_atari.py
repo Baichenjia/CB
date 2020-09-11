@@ -91,7 +91,9 @@ def train(*, env_id, num_env, hps, num_timesteps, seed):
                 nsml.report(step=n_updates, **nsml_dict)
 
             counter += 1
-        if n_updates >= 40*1000: # 40K updates
+        #if n_updates >= 40*1000: # 40K updates
+        #    break
+        if agent.I.stats['tcount'] > num_timesteps:
             break
 
     agent.stop_interaction()
